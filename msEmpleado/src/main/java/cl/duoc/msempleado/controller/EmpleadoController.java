@@ -50,11 +50,10 @@ public class EmpleadoController {
 
     @GetMapping("/dto/{id}")
     public ResponseEntity<EmpleadoDTO> buscarDTO(@PathVariable Integer id){
-        try{
-            Empleado empleado = service.buscarPorId(id);
-            EmpleadoDTO dto = new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut());
-            return ResponseEntity.ok(dto);
-        }catch(Exception e){
+        try {
+            EmpleadoDTO empleadoDTO = service.buscarEmpleadoDTOPorId(id);
+            return ResponseEntity.ok(empleadoDTO);
+        } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }

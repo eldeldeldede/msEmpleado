@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cl.duoc.msempleado.dto.EmpleadoDTO;
 import cl.duoc.msempleado.model.Empleado;
 import cl.duoc.msempleado.repository.EmpleadoRepository;
 
@@ -58,5 +59,10 @@ public class EmpleadoService {
 
         return repo.save(empleado);
 
+    }
+
+    public EmpleadoDTO buscarEmpleadoDTOPorId(Integer id){
+        Empleado empleado = buscarPorId(id);
+        return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut());
     }
 }
