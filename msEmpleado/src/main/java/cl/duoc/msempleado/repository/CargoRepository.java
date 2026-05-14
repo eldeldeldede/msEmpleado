@@ -10,6 +10,4 @@ import cl.duoc.msempleado.model.Cargo;
 @Repository
 public interface CargoRepository extends JpaRepository<Cargo, Integer>{
 
-    Optional<Cargo> findByEmpleadoId(Integer id);
-
 }

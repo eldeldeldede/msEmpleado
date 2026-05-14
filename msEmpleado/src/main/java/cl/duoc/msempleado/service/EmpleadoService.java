@@ -28,10 +28,6 @@ public class EmpleadoService {
     }
         
     public Empleado guardarEmpleado(Empleado empleado){
-        if(empleado.getCargo() != null){
-            empleado.getCargo().setEmpleado(empleado);
-        }
-        
         return repo.save(empleado);
     }
 
@@ -51,11 +47,7 @@ public class EmpleadoService {
         empleado.setTelefono(empleadoActualizar.getTelefono());
         empleado.setGmail(empleadoActualizar.getGmail());
         empleado.setDireccion(empleadoActualizar.getDireccion());
-
-        if(empleadoActualizar.getCargo() != null){
-            empleado.getCargo().setEmpleado(empleado);
-            empleado.setCargo(empleadoActualizar.getCargo());
-        }
+        empleado.setCargo(empleadoActualizar.getCargo());
 
         return repo.save(empleado);
 
