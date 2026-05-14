@@ -26,17 +26,21 @@ public class EmpleadoController {
 
     @PostMapping
     public ResponseEntity<Empleado> guardarEmpleado(@RequestBody Empleado empleado){
-        Empleado nuevoEmpleado = service.guardarEmpleado(empleado);
-        return ResponseEntity.ok(nuevoEmpleado);
+        try{
+            Empleado nuevoEmpleado = service.guardarEmpleado(empleado);
+            return ResponseEntity.ok(nuevoEmpleado);
+        }catch (Exception e{
+            return ResponseEntity.noContent().build();
+        }   
     }
 
     @GetMapping
     public ResponseEntity<List<Empleado>> listarEmpleado(){
-        List<Empleado> empleado = service.listar();
-        if(empleado != null){
+        try{
+            List<Empleado> empleado = service.listar();
             return ResponseEntity.ok(empleado);
-        }else{
-            return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            return ResponseEntity.no
         }
     }
 
