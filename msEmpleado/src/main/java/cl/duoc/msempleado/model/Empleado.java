@@ -24,18 +24,27 @@ public class Empleado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @Column(nullable = false, unique = true)
     private String rut;
+
     @Column(nullable = false)
     private String nombre;
+
     @Column(nullable = false)
     private String apellido;
+
     @Column(nullable = true)
     private String telefono;
+
     @Column(nullable = true)
-    private String gmail;
-    @Column(nullable = true)
-    private String direccion;
+    private String email;
+
+    @Column(name = "usuario_id", nullable = true)
+    private Integer usuarioId;
+
+    @Column(name = "sucursal_id", nullable = true)
+    private Integer sucursalId;
 
     @ManyToOne//Datos relacionados se cargan inmediatamente
     @JoinColumn(name = "cargo_id", nullable = false)

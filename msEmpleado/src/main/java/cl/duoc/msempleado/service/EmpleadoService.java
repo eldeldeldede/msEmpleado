@@ -45,9 +45,10 @@ public class EmpleadoService {
         empleado.setNombre(empleadoActualizar.getNombre());
         empleado.setApellido(empleadoActualizar.getApellido());
         empleado.setTelefono(empleadoActualizar.getTelefono());
-        empleado.setGmail(empleadoActualizar.getGmail());
-        empleado.setDireccion(empleadoActualizar.getDireccion());
+        empleado.setEmail(empleadoActualizar.getEmail());
         empleado.setCargo(empleadoActualizar.getCargo());
+        empleado.setUsuarioId(empleadoActualizar.getUsuarioId());
+        empleado.setSucursalId(empleadoActualizar.getSucursalId());
 
         return repo.save(empleado);
 
