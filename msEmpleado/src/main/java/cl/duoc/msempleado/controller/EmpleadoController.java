@@ -29,7 +29,7 @@ public class EmpleadoController {
         try{
             Empleado nuevoEmpleado = service.guardarEmpleado(empleado);
             return ResponseEntity.ok(nuevoEmpleado);
-        }catch (Exception e{
+        }catch (Exception e){
             return ResponseEntity.noContent().build();
         }   
     }
@@ -40,7 +40,7 @@ public class EmpleadoController {
             List<Empleado> empleado = service.listar();
             return ResponseEntity.ok(empleado);
         }catch (Exception e){
-            return ResponseEntity.no
+            return ResponseEntity.noContent().build();
         }
     }
 
