@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cl.duoc.msempleado.client.UsuarioClient;
 import cl.duoc.msempleado.dto.EmpleadoDTO;
+import cl.duoc.msempleado.dto.UsuarioDTO;
 import cl.duoc.msempleado.model.Empleado;
 import cl.duoc.msempleado.repository.EmpleadoRepository;
 
@@ -14,6 +16,9 @@ public class EmpleadoService {
 
     @Autowired
     private EmpleadoRepository repo;
+
+    @Autowired
+    private UsuarioClient clientUsuario;;
 
     public List<Empleado> listar(){
         return repo.findAll();
@@ -56,6 +61,8 @@ public class EmpleadoService {
 
     public EmpleadoDTO buscarEmpleadoDTOPorId(Integer id){
         Empleado empleado = buscarPorId(id);
-        return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut());
+
+        UsuarioDTO usuario = clientUsuario.obtenerUsuarioDTO(empleado.getUsuarioId());
+        return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut(), usuario);
     }
 }
