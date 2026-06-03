@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import cl.duoc.msempleado.dto.EmpleadoDTO;
 import cl.duoc.msempleado.model.Empleado;
 import cl.duoc.msempleado.service.EmpleadoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("api/v1/empleados")
+@Tag(name = "Empleados", description = "Operacions sobre empleados")
 public class EmpleadoController {
 
     @Autowired
@@ -35,6 +38,10 @@ public class EmpleadoController {
     }
 
     @GetMapping
+    @Operation(
+        summary = "Obtener la lista de empleados registrados",
+        description = "Retorna la lista de empleados registrados en el sistema del Rent a Car."
+    )
     public ResponseEntity<List<Empleado>> listarEmpleado(){
         try{
             List<Empleado> empleado = service.listar();
