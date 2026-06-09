@@ -28,6 +28,10 @@ public class EmpleadoController {
     private EmpleadoService service;
 
     @PostMapping
+    @Operation(
+        summary = "Registrar un nuevo empleado",
+        description = "Permite registrar un nuevo empleado en el sistema del Rent a Car."
+    )
     public ResponseEntity<Empleado> guardarEmpleado(@RequestBody Empleado empleado){
         try{
             Empleado nuevoEmpleado = service.guardarEmpleado(empleado);
@@ -52,6 +56,10 @@ public class EmpleadoController {
     }
 
     @GetMapping("/id/{id}")
+    @Operation(
+        summary = "Buscar empleado por ID",
+        description = "Retorna los detalles de un empleado específico por su ID."
+    )
     public ResponseEntity<Empleado> buscarPorId(@PathVariable Integer id){
         try {
             Empleado empleado = service.buscarPorId(id);
@@ -62,6 +70,10 @@ public class EmpleadoController {
     }
 
     @GetMapping("/dto/{id}")
+    @Operation(
+        summary = "Buscar empleado por ID (DTO)",
+        description = "Retorna los detalles de un empleado específico por su ID en formato DTO."
+    )
     public ResponseEntity<EmpleadoDTO> buscarDTO(@PathVariable Integer id){
         try {
             EmpleadoDTO empleadoDTO = service.buscarEmpleadoDTOPorId(id);
@@ -72,6 +84,10 @@ public class EmpleadoController {
     }
 
     @GetMapping("/rut/{rut}")
+    @Operation(
+        summary = "Buscar empleado por RUT",
+        description = "Retorna los detalles de un empleado específico por su RUT."
+    )
     public ResponseEntity<Empleado> buscarPorRut(@PathVariable String rut){
         try{
             Empleado empleado = service.buscarPorRut(rut);
@@ -81,7 +97,11 @@ public class EmpleadoController {
         }
     }
 
-    @DeleteMapping("/{rut}")
+    @DeleteMapping("/{id}")
+    @Operation(
+        summary = "Eliminar empleado",
+        description = "Permite eliminar un empleado específico por su ID."
+    )
     public ResponseEntity<?> eliminarEmpleado(@PathVariable Integer id){
         try{
             service.eliminarEmpleado(id);
@@ -92,6 +112,10 @@ public class EmpleadoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(
+        summary = "Actualizar empleado",
+        description = "Permite actualizar los detalles de un empleado específico por su ID."
+    )
     public ResponseEntity<Empleado> actualizarEmpleado(@PathVariable Integer id, @RequestBody Empleado empleadoActualizar){
         try {
             Empleado empleado = service.actualizarEmpleado(id, empleadoActualizar);    
