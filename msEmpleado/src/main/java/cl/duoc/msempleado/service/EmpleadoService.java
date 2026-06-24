@@ -64,4 +64,6 @@ public class EmpleadoService {
         UsuarioDTO usuario = clientUsuario.obtenerUsuarioDTO(empleado.getEmail());
         return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut(), usuario.getId(), usuario.getEmail() );
     }
+
+    
 }
