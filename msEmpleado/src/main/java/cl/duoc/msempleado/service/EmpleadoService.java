@@ -59,10 +59,9 @@ public class EmpleadoService {
 
     }
 
-    public EmpleadoDTO buscarEmpleadoDTOPorId(Integer id){
+    public EmpleadoDTO buscarEmpleadoDTO(Integer id){
         Empleado empleado = buscarPorId(id);
-
-        UsuarioDTO usuario = clientUsuario.obtenerUsuarioDTO(empleado.getUsuarioId());
-        return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut(), usuario);
+        UsuarioDTO usuario = clientUsuario.obtenerUsuarioDTO(empleado.getEmail());
+        return new EmpleadoDTO(empleado.getId(), empleado.getNombre(), empleado.getRut(), usuario.getId(), usuario.getEmail() );
     }
 }

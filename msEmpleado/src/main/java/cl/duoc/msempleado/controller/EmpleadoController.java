@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("api/v1/empleados")
-@Tag(name = "Empleados", description = "Operacions sobre empleados")
+@Tag(name = "Empleados", description = "Operaciones sobre empleados")
 public class EmpleadoController {
 
     @Autowired
@@ -76,7 +76,7 @@ public class EmpleadoController {
     )
     public ResponseEntity<EmpleadoDTO> buscarDTO(@PathVariable Integer id){
         try {
-            EmpleadoDTO empleadoDTO = service.buscarEmpleadoDTOPorId(id);
+            EmpleadoDTO empleadoDTO = service.buscarEmpleadoDTO(id);
             return ResponseEntity.ok(empleadoDTO);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();

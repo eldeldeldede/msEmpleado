@@ -13,6 +13,6 @@ public class EmpleadoDTO {
     private String nombre;
     private String rut;
     private Integer idUsuario;
-    private String email
+    private String email;
 
 }
